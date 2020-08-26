@@ -23,7 +23,9 @@ public class MainController {
 
     @RequestMapping(value = "start_iotdev")
     public void start(@RequestParam("dev_num") int devnum) throws Exception {
+        CC = new ControlCenter();
         CC.start(devnum);
+        //return "system started";
 
     }
 

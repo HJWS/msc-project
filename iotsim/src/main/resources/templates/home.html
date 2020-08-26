@@ -6,7 +6,8 @@
 </head>
 <body>
 IoT Control Center
-<button id="start" onclick="loadXML()"><a href =  ""></a>Start</button>
+press the button to start the simulation
+<button id="start" onclick="loadXML()">Start</button>
 
 <div class="outer" id="outer">
     <div class="inner"></div>
@@ -20,10 +21,10 @@ IoT Control Center
     <div class="inner"></div>
     <div class="inner"></div>
 </div>
-<input type="button" value="start" οnclick="startLine();">st</input>
+
 <script>
     function loadXML() {
-
+        window.location.href="http://localhost:8080/start_iotdev?dev_num=1";
     }
 </script>
 </body>

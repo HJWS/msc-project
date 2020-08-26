@@ -1,7 +1,7 @@
 package com.shuowang.iotsim;
 
 import com.shuowang.iotsim.datagenerator.DataGenerator;
-import com.shuowang.iotsim.utils.Latency;
+
 
 import java.io.FileNotFoundException;
 

@@ -22,19 +22,14 @@ public class PublishToBroker {
 
 
     private void init(String clientId) {
-        //初始化连接设置对象
         mqttConnectOptions = new MqttConnectOptions();
-        //初始化MqttClient
         if (null != mqttConnectOptions) {
-//			true可以安全地使用内存持久性作为客户端断开连接时清除的所有状态
             mqttConnectOptions.setCleanSession(true);
-//			设置连接超时
             mqttConnectOptions.setConnectionTimeout(30);
-//			设置持久化方式
             memoryPersistence = new MemoryPersistence();
             if (null != memoryPersistence && null != clientId) {
                 try {
-                    mqttClient = new MqttClient("tcp://127.0.0.1:1883", clientId, memoryPersistence); //连接到broker
+                    mqttClient = new MqttClient("tcp://127.0.0.1:1883", clientId, memoryPersistence);
                 } catch (MqttException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -43,7 +38,7 @@ public class PublishToBroker {
 
             }
         } else {
-            System.out.println("mqttConnectOptions对象为空");
+            System.out.println("mqttConnectOptions object is null");
         }
 
         System.out.println(mqttClient.isConnected());
@@ -51,11 +46,8 @@ public class PublishToBroker {
         if (null != mqttClient) {
             if (!mqttClient.isConnected()) {
 
-//			创建回调函数对象
-                //CallBack mqttReceriveCallback = new CallBack();
-//			客户端添加回调函数
                 mqttClient.setCallback(CALLBACK);
-//			创建连接
+
                 try {
                     System.out.println("connecting" +
                             "" +
@@ -70,14 +62,14 @@ public class PublishToBroker {
 
             }
         } else {
-            System.out.println("mqttClient为空");
+            System.out.println("mqttClient is null");
         }
         System.out.println("MQTT connection establish status:" + mqttClient.isConnected());
     }
 
-    //	关闭连接
+
     public void closeConnect() {
-        //关闭存储方式
+
         if (null != memoryPersistence) {
             try {
                 memoryPersistence.close();
@@ -89,7 +81,7 @@ public class PublishToBroker {
             System.out.println("memoryPersistence is null");
         }
 
-//		关闭连接
+
         if (null != mqttClient) {
             if (mqttClient.isConnected()) {
                 try {
@@ -107,10 +99,10 @@ public class PublishToBroker {
         }
     }
 
-    //	发布消息
+
     public void publishMessage(String pubTopic, String message, int qos) {
         if (null != mqttClient && mqttClient.isConnected()) {
-            System.out.println("发布消息   " + mqttClient.isConnected());
+            System.out.println("publish message   " + mqttClient.isConnected());
             System.out.println("id:" + mqttClient.getClientId());
             MqttMessage mqttMessage = new MqttMessage();
             mqttMessage.setQos(qos);
@@ -122,7 +114,7 @@ public class PublishToBroker {
                 try {
                     MqttDeliveryToken publish = topic.publish(mqttMessage);
                     if (!publish.isComplete()) {
-                        System.out.println("消息发布成功");
+                        System.out.println("message published successfully!");
                     }
                 } catch (MqttException e) {
                     // TODO Auto-generated catch block
@@ -136,7 +128,7 @@ public class PublishToBroker {
 
     }
 
-    //	重新连接
+
     public void reConnect(String clientid) {
         if (null != mqttClient) {
             if (!mqttClient.isConnected()) {
@@ -159,7 +151,7 @@ public class PublishToBroker {
 
     }
 
-    //	订阅主题
+
     public void subTopic(String topic) {
         if (null != mqttClient && mqttClient.isConnected()) {
             try {
@@ -174,7 +166,7 @@ public class PublishToBroker {
     }
 
 
-    //	清空主题
+
     public void cleanTopic(String topic) {
         if(null != mqttClient&& !mqttClient.isConnected()) {
             try {
@@ -188,21 +180,6 @@ public class PublishToBroker {
         }
     }
 
-//    @Override
-//    public void run() {
-//        try {
-//            for (int i=0;i<6;i++){
-//                PublishToBroker publishServer=new PublishToBroker();
-//                Thread.sleep(1000);
-//                publishServer.publishMessage(""+i,"hello"+i,1);
-//
-//            }
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//    }
+
 }
 

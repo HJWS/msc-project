@@ -1,9 +1,5 @@
 package com.shuowang.iotsim.balancer;
 
-import com.shuowang.iotsim.utils.Latency;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class InfoCollection {
 
@@ -58,22 +54,22 @@ public class InfoCollection {
     public void collectLoad() throws InterruptedException {
 
         LoadUpdate loaup = new LoadUpdate();
-//        load1n2 = loaup.run("LoadUpdater_1n2", "cscloud1n2");
-//        load1n3 = loaup.run("LoadUpdater_1n3", "cscloud1n3");
-//        load1n4 = loaup.run("LoadUpdater_1n4", "cscloud1n4");
-//        load1n5 = loaup.run("LoadUpdater_1n5", "cscloud1n5");
-//        load1n6 = loaup.run("LoadUpdater_1n6", "cscloud1n6");
+        load1n2 = loaup.run("LoadUpdater_1n2", "cscloud1n2");
+        load1n3 = loaup.run("LoadUpdater_1n3", "cscloud1n3");
+        load1n4 = loaup.run("LoadUpdater_1n4", "cscloud1n4");
+        load1n5 = loaup.run("LoadUpdater_1n5", "cscloud1n5");
+        load1n6 = loaup.run("LoadUpdater_1n6", "cscloud1n6");
 //        loaup.run("LoadUpdater_1n2", "cscloud1n2");
 //        loaup.run("LoadUpdater_1n3", "cscloud1n3");
 //        loaup.run("LoadUpdater_1n4", "cscloud1n4");
 //        loaup.run("LoadUpdater_1n5", "cscloud1n5");
 //        loaup.run("LoadUpdater_1n6", "cscloud1n6");
 
-        load1n2 = 11;
-        load1n3 = 11;
-        load1n4 = 12;
-        load1n5 = 11;
-        load1n6 = 12;
+//        load1n2 = 11;
+//        load1n3 = 11;
+//        load1n4 = 12;
+//        load1n5 = 11;
+//        load1n6 = 12;
         System.out.println("load:\ncscloud1n2: " +load1n2+
                 " \ncscloud1n3: " +load1n3+
                 " \ncscloud1n4: " +load1n4+
